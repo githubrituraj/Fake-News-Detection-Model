@@ -35,13 +35,15 @@ def home():
 def predict():
     news = request.form['news_input']
 
-    if news.strip() == "":
-        result = "Please enter some text."
+    news_stripped = news.strip()
+    if news_stripped == "":
+        result = "Please enter some text to analyse."
+    elif len(news_stripped.split()) < 8:
+        result = "Input is too short for testing. Please provide a longer news article."
     else:
         cleaned = stemming(news)
         transformed = vectorizer.transform([cleaned])
         prediction = model.predict(transformed)
-
         result = "Real News " if prediction[0] == 1 else "Fake News "
 
     return render_template('index.html', prediction=result, news=news)
