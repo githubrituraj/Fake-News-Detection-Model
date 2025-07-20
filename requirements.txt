@@ -62,7 +62,7 @@ pytest==8.4.1
 python-dateutil==2.9.0.post0
 pyttsx3==2.98
 pytz==2025.2
-//pywin32==308
+#pywin32==308
 
 pyzmq==27.0.0
 referencing==0.36.2
